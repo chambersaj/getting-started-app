@@ -1,2 +1,5 @@
-if (process.env.MYSQL_HOST) module.exports = require('./mysql');
-else module.exports = require('./sqlite');
+//removing fallback abiilty to sqlite
+if (!process.env.MYSQL_HOST){
+  throw new Error("Environment variable MYSQL_HOST must be set.");
+}
+else module.exports = require('./mysql');
